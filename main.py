@@ -45,9 +45,10 @@ def sync_lotw():
     # 检查响应
     if lotw_response.status_code == 200:
         print("请求成功，响应内容：")
-        print(lotw_response.text[:500])
+        print(lotw_response.text)
     else:
         print(f"请求失败，状态码：{lotw_response.status_code}")
+        print(lotw_response.text)
 
 
 if json_response.get('twofactor', True):
