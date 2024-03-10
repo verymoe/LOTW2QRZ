@@ -1,0 +1,32 @@
+name: Run QRZ Sync Script
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 0 * * *' # 每天执行一次，例如在UTC时间的午夜
+
+jobs:
+  qrz-login:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests beautifulsoup4 pyotp
+
+    - name: Run script
+      env:
+        USERNAME: ${{ secrets.USERNAME }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        SECRET: ${{ secrets.SECRET }}
+        BID: ${{ secrets.BID }}
+        LOTW_PW: ${{ secrets.LOTW_PW }}
+      run: python main.py
