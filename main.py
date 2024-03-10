@@ -4,7 +4,7 @@ import pyotp
 import re
 import os
 
-DEBUG = false
+DEBUG = False
 
 # 用户配置
 USERNAME = os.getenv("USERNAME")  # QRZ用户名
