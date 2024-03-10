@@ -10,7 +10,7 @@ DEBUG = False
 USERNAME = os.getenv("USERNAME")  # QRZ用户名
 PASSWORD = os.getenv("PASSWORD") # QRZ密码
 SECRET = os.getenv("SECRET")  # TOTP密钥
-BID = os.getenv("BIT")  # QRZ日志薄ID
+BID = os.getenv("BID")  # QRZ日志薄ID
 LOTW_PW = os.getenv("LOTW_PW")  # LOTW密码
 
 UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36"
@@ -43,7 +43,6 @@ json_response = response.json()
 
 def sync_lotw():
     url = f"https://logbook.qrz.com?op=lotw_get_all&bid={BID}&lotw_pw={LOTW_PW}&sbook=0&lotw_dl_type=new"
-    print(url)
     lotw_response = session.get(url)
     # 检查响应
     if lotw_response.status_code == 200:
