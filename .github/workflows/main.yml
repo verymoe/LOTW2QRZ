@@ -2,8 +2,6 @@ name: Run QRZ Sync Script
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron:  '0 0 * * *' # 每天执行一次，例如在UTC时间的午夜
 
 jobs:
   qrz-login:
